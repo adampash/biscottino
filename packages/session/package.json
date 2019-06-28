@@ -1,17 +1,17 @@
 {
   "name": "@biscottino/session",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "(Apache-2.0 OR MIT)",
   "main": "dist/lib.js",
   "types": "dist/lib.d.ts",
   "dependencies": {
-    "@biscottino/store": "^0.0.3",
+    "@biscottino/store": "^0.0.4",
     "bson-objectid": "^1.2.4",
     "immer": "^1.8.0",
     "koa": "^2.6.2"
   },
   "devDependencies": {
-    "@biscottino/memory-store": "^0.0.3",
+    "@biscottino/memory-store": "^0.0.4",
     "@shopify/jest-koa-mocks": "^2.0.12",
     "@types/koa": "2.0.47"
   }
