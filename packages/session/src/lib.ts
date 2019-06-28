@@ -103,12 +103,13 @@ export default class Session<S extends Store<T>, T> {
       bytes = Buffer.from(value, "base64");
     } else {
       bytes = Buffer.from(ObjectId.generate(), "hex");
-      context.cookies.set(key, bytes.toString("base64"), {
-        ...options,
-        secure: https,
-        signed: true,
-      });
     }
+
+    context.cookies.set(key, bytes.toString("base64"), {
+      ...options,
+      secure: https,
+      signed: true,
+    });
 
     return bytes.toString("hex");
   }
@@ -132,7 +133,11 @@ export default class Session<S extends Store<T>, T> {
       const state = new State(prev);
 
       CACHE.set(context, state);
-      await next();
+      try {
+        await next();
+      } catch (e) {
+        console.error("Error in userland:", e);
+      }
 
       const current = state.read();
 
